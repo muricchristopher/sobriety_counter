@@ -1,20 +1,16 @@
-import React from 'react'
-const TimerElement = ({type, countdownTimer}) => {
+import React from "react";
+const TimerElement = ({ type, countdownTimer }) => {
+  return (
+    <div className="countdown-el">
+      <p className="big-text" id={type}>
+        {countdownTimer[type]}
+      </p>
+      <span>{type}</span>
+    </div>
+  );
+};
 
-  return(
-      <div className="countdown-el">
-        <p className="big-text" id={type}>
-          {countdownTimer[type]}
-        </p>
-        <span>{type}</span>
-      </div>
-  )
-
-}
-
-export default TimerElement
-
-
+export default TimerElement;
 
 //   <div className="countdown-el hours-c">
 //     <p className="big-text" id="hours">

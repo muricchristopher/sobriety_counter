@@ -1,21 +1,39 @@
 import React from "react";
 import Timer from "../Timer";
 import TimerElement from "./TimerElement";
+import useCountdownTimer from "./useCountdownTimer";
 
 function Countdown() {
-  const countDownDate = new Date("Apr,29 2023 23:19:02").getTime();
-  const [countdownTimer, setCountdownTimer] = React.useState({});
-  // const [titlePage, setTitlePage] = React.useState("Titulo estático")
+  const [input, setInput] = React.useState("2020-04-12");
 
-  function advanceCountDown() {
-    setInterval(() => {
-      setCountdownTimer(Timer(countDownDate));
-    }, 1000);
-  }
+  const [tempo, setTempo] = React.useState(new Date().getTime());
 
-  if (countdownTimer !== false) {
-    advanceCountDown();
+  const [countdownTimer, setCountdownTimer] = React.useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  const [status, setStatus] = React.useState(false);
+  const [intervalo, setIntervalo] = React.useState(false);
+
+  function handleClick() {
+    setIntervalo(!intervalo);
+    setTempo(new Date().getTime());
   }
+  function handleZero() {}
+
+  React.useEffect(() => {
+    if (intervalo) {
+      const interval = setInterval(() => {
+        setCountdownTimer(Timer(tempo));
+      }, 1000);
+      return () => clearInterval(interval);
+    } else {
+      setCountdownTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    }
+  }, [intervalo]);
 
   return (
     <div className="Countdown">
@@ -27,6 +45,9 @@ function Countdown() {
         <TimerElement type="minutes" countdownTimer={countdownTimer} />
         <TimerElement type="seconds" countdownTimer={countdownTimer} />
       </div>
+
+      <button onClick={handleClick}>Iniciar</button>
+      <button onClick={handleZero}>Zerar</button>
     </div>
   );
 }
