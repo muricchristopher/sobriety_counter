@@ -1,10 +1,10 @@
 import React from "react";
 import Timer from "../Timer";
 import TimerElement from "./TimerElement";
-import useCountdownTimer from "./useCountdownTimer";
+// import useCountdownTimer from "./useCountdownTimer";
 
 function Countdown() {
-  const [input, setInput] = React.useState("2020-04-12");
+  // const [input, setInput] = React.useState("2020-04-12");
 
   const [tempo, setTempo] = React.useState(new Date().getTime());
 
@@ -15,7 +15,6 @@ function Countdown() {
     seconds: 0,
   });
 
-  const [status, setStatus] = React.useState(false);
   const [intervalo, setIntervalo] = React.useState(false);
 
   function handleClick() {
