@@ -32,7 +32,7 @@ function Countdown() {
 
       return () => clearInterval(interval);
     } else {
-      setCountdownTimer({ days: 90, hours: 0, minutes: 0, seconds: 0 });
+      setCountdownTimer({ days: 20, hours: 0, minutes: 0, seconds: 0 });
     }
   }, [intervalo, tempo]);
 
