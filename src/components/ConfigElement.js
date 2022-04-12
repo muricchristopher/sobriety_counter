@@ -17,7 +17,11 @@ const ConfigElement = ({
 
       <h2>Preferences</h2>
       <hr></hr>
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <div className="configInput">
           <label>Title streak: </label>
           <input
@@ -30,7 +34,7 @@ const ConfigElement = ({
           <label>Goal: </label>
           <input
             type="range"
-            min={countdownTimer.days + 3}
+            // min={countdownTimer.days + 3}
             max="240"
             value={goal}
             onChange={({ target }) => setGoal(parseInt(target.value))}

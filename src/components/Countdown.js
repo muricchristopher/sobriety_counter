@@ -24,21 +24,20 @@ function Countdown() {
     setTempo(new Date().getTime());
   }
 
-  const teste = "4px";
-
   React.useEffect(() => {
     if (intervalo) {
       const interval = setInterval(() => {
         setCountdownTimer(Timer(tempo));
       }, 1000);
+
       return () => clearInterval(interval);
     } else {
-      setCountdownTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      setCountdownTimer({ days: 90, hours: 0, minutes: 0, seconds: 0 });
     }
   }, [intervalo, tempo]);
 
   return (
-    <div className="container">
+    <>
       {configElement && (
         <ConfigElement
           countdownTimer={countdownTimer}
@@ -51,7 +50,10 @@ function Countdown() {
         ></ConfigElement>
       )}
 
-      <div className={!configElement ? "Countdown" : "Countdown blur"}>
+      <div
+        className={!configElement ? "Countdown" : "Countdown blur"}
+        onClick={(e) => configElement && setConfigElement(!configElement)}
+      >
         {habitName ? <h1>{habitName}</h1> : <h1>Sobriety counter</h1>}
         <div>
           <span
@@ -62,13 +64,6 @@ function Countdown() {
           </span>
         </div>
         <hr />
-        <div className="countdown-container">
-          <TimerElement type="days" countdownTimer={countdownTimer} />
-          <TimerElement type="hours" countdownTimer={countdownTimer} />
-          <TimerElement type="minutes" countdownTimer={countdownTimer} />
-          <TimerElement type="seconds" countdownTimer={countdownTimer} />
-        </div>
-
         <div
           style={{
             backgroundColor: "white",
@@ -77,6 +72,12 @@ function Countdown() {
           className="goal-counter"
         >
           {((countdownTimer.days * 100) / goal).toFixed(0) + "%"}
+        </div>
+        <div className="countdown-container">
+          <TimerElement type="days" countdownTimer={countdownTimer} />
+          <TimerElement type="hours" countdownTimer={countdownTimer} />
+          <TimerElement type="minutes" countdownTimer={countdownTimer} />
+          <TimerElement type="seconds" countdownTimer={countdownTimer} />
         </div>
 
         <button
@@ -89,13 +90,13 @@ function Countdown() {
             marginTop: "20px",
           }}
         >
-          <span>
-            <i className="fa-solid fa-power-off"></i>
+          <span className="click">
+            <i className="fa-solid fa-power-off "></i>
             -- Report relapse
           </span>
         </button>
       </div>
-    </div>
+    </>
   );
 }
 
