@@ -2,6 +2,7 @@ import React from "react";
 import Timer from "../Timer";
 import TimerElement from "./TimerElement";
 import ConfigElement from "./ConfigElement";
+
 // import useCountdownTimer from "./useCountdownTimer";
 
 function Countdown() {
@@ -79,7 +80,6 @@ function Countdown() {
           <TimerElement type="minutes" countdownTimer={countdownTimer} />
           <TimerElement type="seconds" countdownTimer={countdownTimer} />
         </div>
-
         <button
           onClick={handleClick}
           style={{
