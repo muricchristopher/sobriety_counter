@@ -1,13 +1,14 @@
 import React from "react";
 
 const ConfigElement = ({
-  habitName,
-  setHabitName,
+  sobrietyTitle,
+  setSobrietyTitle,
   setConfigElement,
   configElement,
   goal,
   setGoal,
   countdownTimer,
+  data,
 }) => {
   return (
     <div className="ConfigElement">
@@ -26,8 +27,8 @@ const ConfigElement = ({
           <label>Title streak: </label>
           <input
             type="text"
-            value={habitName}
-            onChange={({ target }) => setHabitName(target.value)}
+            value={sobrietyTitle}
+            onChange={({ target }) => setSobrietyTitle(target.value)}
           ></input>
         </div>
         <div className="configInput">
@@ -43,7 +44,7 @@ const ConfigElement = ({
         </div>
         <div className="configInput">
           <label>Sobriety total time: </label>
-          <span>44hrs</span>
+          <span>{data}</span>
         </div>
       </form>
     </div>
